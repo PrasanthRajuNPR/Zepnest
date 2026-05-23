@@ -40,7 +40,7 @@ export default function DashboardPage() {
               <h1 className="dashboard-title">My Requests</h1>
               <p className="dashboard-sub">Track your service requests</p>
             </div>
-            <button className="btn btn-primary" onClick={() => setShowModal(true)}>+ New</button>
+            <button className="btn btn-primary" onClick={() => setShowModal(true)}>+ New Request</button>
           </div>
 
           <div className="stats-row">
