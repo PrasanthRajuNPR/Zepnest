@@ -6,9 +6,11 @@ const generateToken = (res, payload) => {
   });
 
   res.cookie('token', token, {
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-    maxAge: 2 * 24 * 60 * 60 * 1000, // 2 days
+    httpOnly: true,
+    secure: true,
+    sameSite: 'none',
+    path: '/',
+    maxAge: 2 * 24 * 60 * 60 * 1000,
   });
 
   return token;

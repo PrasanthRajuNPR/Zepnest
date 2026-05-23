@@ -106,8 +106,10 @@ const loginAdmin = async (req, res) => {
 // @route POST /api/auth/logout
 const logout = (req, res) => {
   res.clearCookie('token', {
-    secure: process.env.NODE_ENV === 'production',
-    sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+    httpOnly: true,
+    secure: true,
+    sameSite: 'none',
+    path: '/',
   });
   res.json({ message: 'Logged out successfully' });
 };
