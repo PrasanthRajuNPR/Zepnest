@@ -381,20 +381,21 @@ All errors follow this format:
 
 ### ⚠️ Cookie Setup for Localhost
 
-Tokens are stored in cookies. The cookie options in `backend/utils/generateToken.js`:
+Tokens are stored in cookies. The current config in `backend/utils/generateToken.js`:
 
 ```js
 res.cookie('token', token, {
-  // httpOnly is NOT set — cookie is accessible but auto-sent by browser
-  secure: process.env.NODE_ENV === 'production',   // false on localhost
+  secure: process.env.NODE_ENV === 'production',
   sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
-  maxAge: 2 * 24 * 60 * 60 * 1000,  // 2 days
+  maxAge: 2 * 24 * 60 * 60 * 1000,
 });
 ```
 
+> Note: `httpOnly` is not used — ensures logout properly clears the cookie.
+
 - **Localhost:** Works automatically. `secure: false`, `sameSite: lax`
 - **Production:** Set `NODE_ENV=production`. Requires HTTPS for `secure: true` + `sameSite: none`
-- **Postman testing:** Go to Postman Settings → enable **"Automatically follow redirects"** and **"Send cookies"**. Cookies will be captured after login and sent on subsequent requests.
+- **Postman testing:** Enable **"Send cookies"** and **"Automatically follow redirects"** in Postman settings.
 
 ### 🍪 Third-Party Cookies — Required for Production
 

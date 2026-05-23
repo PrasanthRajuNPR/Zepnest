@@ -115,16 +115,17 @@ ADMIN_UI_URL=http://localhost:3001
 
 ### ⚠️ Important — Cookie Configuration for Localhost
 
-JWT tokens are stored in HTTP cookies. The `secure` flag is automatically set based on `NODE_ENV`:
+JWT tokens are stored in HTTP cookies. The current configuration in `backend/utils/generateToken.js`:
 
 ```js
-// backend/utils/generateToken.js
 res.cookie('token', token, {
   secure: process.env.NODE_ENV === 'production',  // false on localhost ✅
   sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
   maxAge: 2 * 24 * 60 * 60 * 1000,
 });
 ```
+
+> Note: `httpOnly` is not used — this ensures logout correctly clears the cookie.
 
 **As long as `NODE_ENV=development` in your `.env`, cookies will work on localhost without any changes.**
 

@@ -106,7 +106,6 @@ const loginAdmin = async (req, res) => {
 // @route POST /api/auth/logout
 const logout = (req, res) => {
   res.clearCookie('token', {
-    httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
     sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
   });

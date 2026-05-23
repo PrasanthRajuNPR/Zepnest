@@ -26,6 +26,7 @@ export default function DashboardPage() {
     pending: requests.filter(r => r.status === 'Pending').length,
     progress: requests.filter(r => r.status === 'In Progress').length,
     completed: requests.filter(r => r.status === 'Completed').length,
+    cancelled: requests.filter(r => r.status === 'Cancelled').length,
   };
 
   return (
@@ -39,15 +40,16 @@ export default function DashboardPage() {
               <h1 className="dashboard-title">My Requests</h1>
               <p className="dashboard-sub">Track your service requests</p>
             </div>
-            <button className="btn btn-primary" onClick={() => setShowModal(true)}>+ New Request</button>
+            <button className="btn btn-primary" onClick={() => setShowModal(true)}>+ New</button>
           </div>
 
           <div className="stats-row">
             {[
-              { label: 'Total', val: stats.total, cls: '' },
-              { label: 'Pending', val: stats.pending, cls: 'orange' },
-              { label: 'In Progress', val: stats.progress, cls: 'blue' },
-              { label: 'Completed', val: stats.completed, cls: 'green' },
+              { label: 'Total',       val: stats.total,     cls: '' },
+              { label: 'Pending',     val: stats.pending,   cls: 'orange' },
+              { label: 'In Progress', val: stats.progress,  cls: 'blue' },
+              { label: 'Completed',   val: stats.completed, cls: 'green' },
+              { label: 'Cancelled',   val: stats.cancelled, cls: 'red' },
             ].map(s => (
               <div className="stat-card card" key={s.label}>
                 <div className={`stat-val ${s.cls}`}>{s.val}</div>
