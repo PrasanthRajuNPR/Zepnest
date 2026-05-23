@@ -65,7 +65,7 @@ export default function LoginPage() {
                 placeholder={tab === 'admin' ?"Admin@123" : "••••••••"} />
             </div>
             <button className="btn btn-primary auth-btn" type="submit" disabled={loading}>
-              {loading ? 'Signing in...' : tab === 'admin' ? '🛡 Sign in as Admin' : 'Sign In →'}
+              {loading ? 'Signing in...' : tab === 'admin' ? 'Sign in as Admin' : 'Sign In →'}
             </button>
           </form>
 
