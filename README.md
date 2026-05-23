@@ -137,6 +137,27 @@ However, if cookies are still not being sent/received on localhost, check:
 
 ---
 
+### 🍪 Third-Party Cookies — Required for Production
+
+When the frontend and backend are deployed on **different domains** (e.g. Vercel + Railway), the browser treats the backend cookie as a **third-party cookie**. You must enable third-party cookies in your browser for login to work.
+
+**How to enable on Desktop (Chrome):**
+1. Open Chrome → click the **eye / info icon** in the address bar
+2. Click **"Third-party cookies"** → select **"Allow cookies for this site"**
+3. Or go to: [chrome://settings/cookies](chrome://settings/cookies) → turn off "Block third-party cookies"
+
+**How to enable on Mobile (Chrome Android / iOS):**
+1. Open Chrome → tap the **three dots menu** → Settings
+2. Go to **Privacy and Security** → **Cookies**
+3. Select **"Allow all cookies"**
+
+**How to enable on Safari (iOS/macOS):**
+1. Settings → Safari → uncheck **"Prevent Cross-Site Tracking"**
+
+> ⚠️ If a user opens the app and login doesn't work / they get logged out immediately, the cause is almost always **third-party cookies being blocked**. Ask them to enable third-party cookies using the steps above and refresh the page.
+
+---
+
 Start the backend:
 
 ```bash
